@@ -13,17 +13,20 @@ let ProfilePicture = "images/Picture.jpeg";
 
 const nameElement = document.getElementById("name");
 const foodElement = document.getElementById("food");
-const yearElement = document.querySelector("year");
+const foodElement2 = document.getElementById("food2");
+const foodElement3 = document.getElementById("food3");
+const foodElement4 = document.getElementById("food4");
+const yearElement = document.querySelector("#year");
 const imageElement = document.getElementById("profileImage");
 
 
 /* Step 4 - Adding Content */
 
-nameElement.innerHTML = "<strong>${Michael Olaoluwa}</strong>";
+nameElement.innerHTML = `<strong>${fullName}</strong>`;
 yearElement.textContent = currentYear;
 imageElement.setAttribute('src', ProfilePicture);
 imageElement.setAttribute('alt', `Profile image of {fullName}`);
-foodElement.innerHTML += '<br>{favoriteFoods}';
+
 
 
 
@@ -32,9 +35,46 @@ foodElement.innerHTML += '<br>{favoriteFoods}';
 /* Step 5 - Array */
 
 favoriteFoods = ['Pizza', 'Beans', 'Rice', 'Burgers', 'Ice Cream'];
-singleFavoriteFood = '';
-favoriteFoods.push(anotherSingleFavoriteFood);
-console.log(favoriteFoods);
+let value = '';
+console.log(`aaa`,favoriteFoods);
+for (let index = 0; index < favoriteFoods.length; index++) {
+    value += favoriteFoods[index] + `,`;
+    
+}
+value += `<br/>`
+foodElement.innerHTML = value ;
+value =""
+singleFavoriteFood = 'stew';
+
+favoriteFoods.push(singleFavoriteFood);
+for (let index = 0; index < favoriteFoods.length; index++) {
+    value += favoriteFoods[index] + `,`;
+    
+}
+value += `<br/>`
+foodElement2.innerHTML = value ;
+
+value =""
+favoriteFoods = ['Pizza', 'Beans', 'Rice', 'Burgers', 'Ice Cream']
+favoriteFoods.pop();
+for (let index = 0; index < favoriteFoods.length; index++) {
+    value += favoriteFoods[index] + `,`;
+    
+}
+value += `<br/>`
+foodElement3.innerHTML = value ;
+
+value =""
+
+favoriteFoods = ['Pizza', 'Beans', 'Rice', 'Burgers', 'Ice Cream']
+favoriteFoods.shift();
+for (let index = 0; index < favoriteFoods.length; index++) {
+    value += favoriteFoods[index] + `,`;
+    
+}
+value += `<br/>`
+foodElement4.innerHTML = value ;
+
 
 
 //foodElement.textContent = 'My favorite foods: ' + favoriteFoods.join(', ');
