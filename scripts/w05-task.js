@@ -10,7 +10,8 @@ const displayTemples = async (temples) => {
     const article = document.createElement("article");
 
     const h3 = document.createElement("h3");
-    h3.textcontent = temple.templeName;
+    h3.innerHTML = temple.templeName;
+    console.log("temple name: ", temple.templeName);
 
     const img = document.createElement("img");
     img.src = temple.imageUrl;
