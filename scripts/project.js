@@ -7,9 +7,13 @@ async function getData(requestURL) {
   return result["prophets"];
 }
 
-async function display(requestURL) {
+async function loadProphet(requestURL) {
   const prophets = await getData(requestURL);
-  console.log(prophets);
+  display(prophets);
+}
+
+async function display(prophets) {
+  document.querySelector("div.cards").innerHTML = "";
   for (let i = 0; i < prophets.length; i++) {
     let card = document.createElement("section");
     let h2 = document.createElement("h2");
@@ -35,12 +39,20 @@ async function display(requestURL) {
   }
 }
 
-display(requestURL);
+loadProphet(requestURL);
 async function searchProphet(value) {
-  const reg = new RegExp(value);
+  const reg = new RegExp(value, "i");
   const prophets = await getData(requestURL);
+  const result = prophets.filter((data) => {
+    if (reg.test(`${data.name} ${data.lastname}`)) {
+      return data;
+    }
+  });
+
+  await display(result);
 }
 
 document.getElementById("search").addEventListener("input", (value) => {
   const input = document.getElementById("search");
+  searchProphet(input.value);
 });
